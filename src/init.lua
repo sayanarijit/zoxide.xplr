@@ -16,13 +16,15 @@ local function setup(args)
   xplr.config.modes.builtin[args.mode].key_bindings.on_key[args.key] = {
     help = "zoxide jump",
     messages = {
-      { BashExec = [===[
+      {
+        BashExec = [===[
         PTH=$(zoxide query -i)
         if [ "$PTH" ]; then
           echo ChangeDirectory: "'"${PTH:?}"'" >> "${XPLR_PIPE_MSG_IN:?}"
         fi
         ]===]
       },
+      "PopMode",
     }
   }
 end

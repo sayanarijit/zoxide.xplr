@@ -1,13 +1,9 @@
-xplr plugin template
-====================
-
-Use this template to [write your own xplr plugin](https://arijitbasu.in/xplr/en/writing-plugins.html).
-
+[![xplr-zoxide.gif](https://s6.gifyu.com/images/xplr-zoxide.gif)](https://gifyu.com/image/AclQ)
 
 Requirements
 ------------
 
-- Some tool
+- [zoxide](https://github.com/ajeetdsouza/zoxide)
 
 
 Installation
@@ -26,26 +22,20 @@ Installation
   ```bash
   mkdir -p ~/.config/xplr/plugins
 
-  git clone https://github.com/me/{plugin}.xplr ~/.config/xplr/plugins/{plugin}
+  git clone https://github.com/sayanarijit/zoxide.xplr ~/.config/xplr/plugins/zoxide
   ```
 
 - Require the module in `~/.config/xplr/init.lua`
 
   ```lua
-  require("{plugin}").setup()
+  require("zoxide").setup()
   
   -- Or
   
-  require("{plugin}").setup{
-    mode = "action",
-    key = ":",
+  require("zoxide").setup{
+    mode = "default",
+    key = "Z",
   }
 
-  -- Type `::` and enjoy.
+  -- Type `Z` to spawn zoxide prompt.
   ```
-
-
-Features
---------
-
-- Some cool feature

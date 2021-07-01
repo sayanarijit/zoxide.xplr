@@ -19,7 +19,7 @@ local function setup(args)
       {
         BashExec = [===[
         PTH=$(zoxide query -i)
-        if [ "$PTH" ]; then
+        if [ -d "$PTH" ]; then
           echo ChangeDirectory: "'"${PTH:?}"'" >> "${XPLR_PIPE_MSG_IN:?}"
         fi
         ]===]

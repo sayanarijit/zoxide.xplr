@@ -1,20 +1,22 @@
 [![xplr-zoxide.gif](https://s6.gifyu.com/images/xplr-zoxide.gif)](https://gifyu.com/image/AclQ)
 
-Requirements
-------------
+## Requirements
 
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
 
-
-Installation
-------------
+## Installation
 
 ### Install manually
 
 - Add the following line in `~/.config/xplr/init.lua`
 
   ```lua
-  package.path = os.getenv("HOME") .. '/.config/xplr/plugins/?/src/init.lua'
+  local home = os.getenv("HOME")
+  package.path = home
+  .. "/.config/xplr/plugins/?/init.lua;"
+  .. home
+  .. "/.config/xplr/plugins/?.lua;"
+  .. package.path
   ```
 
 - Clone the plugin
@@ -29,9 +31,9 @@ Installation
 
   ```lua
   require("zoxide").setup()
-  
+
   -- Or
-  
+
   require("zoxide").setup{
     mode = "default",
     key = "Z",

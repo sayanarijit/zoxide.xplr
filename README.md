@@ -35,6 +35,7 @@
   -- Or
 
   require("zoxide").setup{
+    bin = "zoxide",
     mode = "default",
     key = "Z",
   }

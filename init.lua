@@ -1,31 +1,24 @@
 local function setup(args)
   local xplr = xplr
 
-  if args == nil then
-    args = {}
-  end
+  args = args or {}
 
-  if args.mode == nil then
-    args.mode = "default"
-  end
-
-  if args.key == nil then
-    args.key = "Z"
-  end
+  args.mode = args.mode or "default"
+  args.key = args.key or "Z"
 
   xplr.config.modes.builtin[args.mode].key_bindings.on_key[args.key] = {
     help = "zoxide jump",
     messages = {
       {
         BashExec = [===[
-        PTH=$(zoxide query -i)
-        if [ -d "$PTH" ]; then
-          echo ChangeDirectory: "'"${PTH:?}"'" >> "${XPLR_PIPE_MSG_IN:?}"
-        fi
-        ]===]
+          PTH="$(zoxide query -i)"
+          if [ -d "$PTH" ]; then
+            "$XPLR" -m "ChangeDirectory: %q" "${PTH:?}"
+          fi
+        ]===],
       },
       "PopMode",
-    }
+    },
   }
 end
 
